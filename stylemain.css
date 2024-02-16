@@ -30,7 +30,7 @@ body {
 #bluecar {
   height: 100px;
   width: 100px;
-  background-color: blue;
+  /* background-color: blue; */
   position: relative;
   top: 0px;
   left: 0px;
@@ -54,7 +54,7 @@ body {
 #redcar {
   height: 100px;
   width: 100px;
-  background-color: red;
+  /* background-color: red; */
   position: relative;
   top: 250px;
   left: 100px;
