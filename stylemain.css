@@ -1,11 +1,103 @@
 /*layout whole html*/
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 /*layout body*/
 body {
-    background-color: green;
-    background-image: -webkit-linear-gradient(45deg, gray 45%, rgb(75, 75, 75) 55%);
+  background-color: green;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    gray 40%,
+    rgb(75, 75, 75) 60%
+  );
+  min-height: 800px;
+}
+
+/*game board design*/
+#game {
+  height: 700px;
+  width: 300px;
+  border: 1px solid black;
+  margin: 1rem auto;
+  background-image: url(/assets/road.png);
+  background-size: contain;
+  overflow: hidden;
+}
+
+/*blue car*/
+#bluecar {
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  animation: mover 1s linear infinite;
+  -webkit-animation: move 1s linear infinite;
+}
+#bluecar img {
+  height: 100px;
+}
+@keyframes move {
+  0% {
+    top: 0px;
+  }
+  100% {
+    top: 701px;
+  }
+}
+
+/*red car*/
+#redcar {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  position: relative;
+  top: 250px;
+  left: 100px;
+  text-align: center;
+}
+#redcar img {
+  height: 100px;
+}
+
+/*result design*/
+#result {
+  height: 200px;
+  width: 400px;
+  background-color: red;
+  margin: 1rem auto;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  font-size: 30px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  color: white;
+  display: none;
+}
+#score {
+  font-size: 2.2rem;
+  color: goldenrod;
+}
+#btn {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border: none;
+  background: black;
+  color: white;
+  font-size: 25px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
 }
