@@ -1,9 +1,16 @@
 var blueCar = document.getElementById("bluecar");
 var redCar = document.getElementById("redcar");
 var result = document.getElementById("result");
-var score = document.getElementById("score");
+var scoreDisplay = document.getElementById("score");
+var highScoreDisplay = document.getElementById("highScoreDisplay"); // Updated reference
 var game = document.getElementById("game");
 var counter = 0;
+
+// Check for existing high score in local storage
+var highScore = localStorage.getItem("highScore") || 0;
+
+// Display the high score on the page
+highScoreDisplay.innerHTML = "High Score: " + highScore;
 
 blueCar.addEventListener("animationiteration", function () {
   var random = Math.floor(Math.random() * 3) * 100;
@@ -29,16 +36,36 @@ window.addEventListener("keydown", function (e) {
     }
   }
 });
-setInterval(function Gameover(){
-    var blueCarTop= parseInt(window.getComputedStyle(blueCar).getPropertyValue("top"));
-     var blueCarLeft= parseInt(window.getComputedStyle(blueCar).getPropertyValue("left"));
-     var redCarLeft= parseInt(window.getComputedStyle(redCar).getPropertyValue("left"));
-     if((blueCarLeft === redCarLeft)&&(blueCarTop>250)&&(blueCarTop<450)){
-        result.style.display ="block";
-        game.style.display ="none";
-        score.innerHTML =`Your score is ${counter}`;
 
-        counter = 0;
+function restartGame() {
+  result.style.display = "none";
+  game.style.display = "block";
+}
 
-     }
- },10)
+setInterval(function Gameover() {
+  var blueCarTop = parseInt(
+    window.getComputedStyle(blueCar).getPropertyValue("top")
+  );
+  var blueCarLeft = parseInt(
+    window.getComputedStyle(blueCar).getPropertyValue("left")
+  );
+  var redCarLeft = parseInt(
+    window.getComputedStyle(redCar).getPropertyValue("left")
+  );
+
+  if (blueCarLeft === redCarLeft && blueCarTop > 250 && blueCarTop < 450) {
+    result.style.display = "block";
+    game.style.display = "none";
+
+    // Update the high score if the current score is higher
+    if (counter > highScore) {
+      highScore = counter;
+      localStorage.setItem("highScore", highScore);
+    }
+
+    scoreDisplay.innerHTML = "Your score is " + counter;
+    highScoreDisplay.innerHTML = "High Score: " + highScore;
+
+    counter = 0;
+  }
+}, 10);

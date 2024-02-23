@@ -6,13 +6,7 @@
 
 /*layout body*/
 body {
-  background-color: green;
-  background-image: -webkit-linear-gradient(
-    45deg,
-    gray 40%,
-    rgb(75, 75, 75) 60%
-  );
-  min-height: 800px;
+  background-color: grey;
 }
 
 /*game board design*/
@@ -22,20 +16,31 @@ body {
   border: 1px solid black;
   margin: 1rem auto;
   background-image: url(/assets/road.png);
+  background-repeat: repeat;
   background-size: contain;
   overflow: hidden;
+  animation: moveBackground 4s linear infinite;
+  -webkit-animation: moveBackground 4s linear infinite;
+}
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1000px;
+  }
 }
 
 /*blue car*/
 #bluecar {
   height: 100px;
   width: 100px;
-  /* background-color: blue; */
-  position: relative;
+  /*background-color: blue;
+  */position: relative;
   top: 0px;
   left: 0px;
   text-align: center;
-  animation: mover 1s linear infinite;
+  animation: move 1s linear infinite;
   -webkit-animation: move 1s linear infinite;
 }
 #bluecar img {
@@ -66,7 +71,7 @@ body {
 
 /*result design*/
 #result {
-  height: 200px;
+  height: 215px;
   width: 400px;
   background-color: red;
   margin: 1rem auto;
@@ -83,7 +88,10 @@ body {
 }
 #score {
   font-size: 2.2rem;
-  color: goldenrod;
+  color: white;
+}
+#highScoreDisplay {
+  color: gold;
 }
 #btn {
   padding: 0.5rem 1rem;
